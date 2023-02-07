@@ -9,7 +9,6 @@ export interface CounterState {
 
 const initialState: CounterState = {
   value: 0,
-  // eslint-disable-next-line no-bitwise
   status: 'finished',
 };
 
@@ -33,10 +32,15 @@ export const counterSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchData.pending, (state, action) => {
+      state.status = 'loading';
+      console.log('state.status', state.status);
       console.log(action.payload);
     });
     builder.addCase(fetchData.fulfilled, (state, action) => {
       console.log('Done - -- ');
+      state.status = 'finished';
+      console.log('state.status', state.status);
+
       console.log(action.payload);
     });
   },
