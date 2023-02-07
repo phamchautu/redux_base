@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useAppSelector, useAppDispatch} from '../../@core/redux/reduxUtils';
-import {increment, decrement, incrementByAmount} from './ducks/CounterSlice';
+import {increment, decrement} from './ducks/CounterSlice';
 import {getCount} from './ducks/CounterSelection';
 import styles from './styles';
+import {fetchData} from './ducks/CounterThunk';
 
 const Counter = () => {
   const count = useAppSelector(state => getCount(state!));
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
 
   return (
     <View style={styles.container}>
@@ -22,10 +27,8 @@ const Counter = () => {
         style={styles.button}>
         <Text>-</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => dispatch(incrementByAmount(5))}
-        style={styles.button}>
-        <Text>+5</Text>
+      <TouchableOpacity style={styles.button}>
+        <Text>Fetch Data</Text>
       </TouchableOpacity>
     </View>
   );
