@@ -6,15 +6,15 @@
  */
 
 import React from 'react';
-import {Text} from 'react-native';
 
 import {Provider} from 'react-redux';
-import store from './@core';
+import store from './@core/redux';
+import Counter from './src/Counter';
 function App(): JSX.Element {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <Text>Hello</Text>
+        <Counter />
       </Provider>
     </React.StrictMode>
   );
