@@ -1,12 +1,12 @@
 import {ReducersMapObject} from '@reduxjs/toolkit';
-import CounterReducer, {
-  CounterState,
-} from '../../src/Counter/ducks/CounterSlice';
+import ProductReducer, {
+  ProductState,
+} from '../../src/Products/ducks/ProductSlice';
 
 export interface AppState {
-  counter: CounterState;
+  products: ProductState;
 }
 
 export const RootReducers: ReducersMapObject = {
-  counter: CounterReducer,
+  product: ProductReducer,
 };
