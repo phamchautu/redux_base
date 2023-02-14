@@ -8,5 +8,5 @@ export interface AppState {
 }
 
 export const RootReducers: ReducersMapObject = {
-  product: ProductReducer,
+  products: ProductReducer,
 };

@@ -1,23 +1,18 @@
 import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
 import {useAppSelector, useAppDispatch} from '../../@core/redux/reduxUtils';
 import {getProducts} from './ducks/ProductSelection';
-import styles from './styles';
 import {fetchData} from './ducks/ProductThunk';
+import ProductsView from './ProductScreen';
 
-const Product = () => {
+const ProductContainer = () => {
   const products = useAppSelector(state => getProducts(state!));
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
-  console.log('re-render');
+  console.log('render', products.length);
 
-  return (
-    <View style={styles.container}>
-      <Text>Hello</Text>
-    </View>
-  );
+  return <ProductsView status="loading" products={products} />;
 };
-export default Product;
+export default ProductContainer;
